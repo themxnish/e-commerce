@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { assets } from '../assets/assets';
+import { assets } from '../assets/assets.js';
 import { Link, NavLink } from 'react-router-dom';
 import { Search, User, ShoppingCart, Menu, ArrowLeft } from 'lucide-react';
 
@@ -17,7 +17,7 @@ const NavBar = () => {
       <ul className="hidden sm:flex gap-5 text-sm font-semibold">
         {["Home", "Collection", "Solids", "Cotton", "Silk"].map((item, index) => (
           <li key={index}>
-            <NavLink to={`/${item.toLowerCase()}`} className="group flex flex-col items-center gap-2">
+            <NavLink  to={item === "Home" ? "/" : `/${item.toLowerCase()}`} className="group flex flex-col items-center gap-2">
               <p>{item}</p>
               <hr className="w-0 group-hover:w-2/4 transition-all duration-500 ease-in-out border-0 h-[1.5px] bg-black" />
             </NavLink>
@@ -39,7 +39,7 @@ const NavBar = () => {
 
         <Link to="/cart" className="relative">
           <ShoppingCart className="w-5 h-5 cursor-pointer" />
-          <p className="absolute -right-2 -top-2 bg-black text-white w-5 h-4 text-center flex justify-center items-center leading-4 aspect-square text-xs rounded-full">2</p>
+          <p className="absolute -right-3 -top-3 bg-black text-white w-5 h-4 text-center flex justify-center items-center leading-4 aspect-square text-xs rounded-full">2</p>
         </Link>
 
         <Menu onClick={() => setOpen(true)} className="w-5 h-5 cursor-pointer sm:hidden" />
@@ -52,7 +52,7 @@ const NavBar = () => {
             <p className="text-lg text-sm font-semibold">Menu</p>
           </div>
           {["Home", "Collection", "Solids", "Cotton", "Silk"].map((item, index) => (
-            <NavLink key={index} onClick={() => setOpen(false)} to={`/${item.toLowerCase()}`} className="py-2 pl-6 border border-b border-gray-200">
+            <NavLink key={index} onClick={() => setOpen(false)}  to={item === "Home" ? "/" : `/${item.toLowerCase()}`} className="py-2 pl-6 border border-b border-gray-200">
               {item}
             </NavLink>
           ))}

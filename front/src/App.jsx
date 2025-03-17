@@ -12,6 +12,7 @@ import About from './pages/About'
 import Collection from './pages/Collection'
 
 import NavBar from './components/NavBar'
+import Footer from './components/Footer'
 
 const App = () => {
     return (
@@ -28,6 +29,7 @@ const App = () => {
                 <Route path="/about" element={<About />} />
                 <Route path="/collection" element={<Collection />} />
             </Routes>
+            <Footer/>
         </div>
     )
 }
