@@ -1,21 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { assets } from '../assets/assets.js';
 import { Link, NavLink } from 'react-router-dom';
+import { ShopContext } from '../context/Shop.jsx';
 import { Search, User, ShoppingCart, Menu, ArrowLeft } from 'lucide-react';
 
 const NavBar = () => {
   const [open, setOpen] = useState(false);
+  const {setShowSearch} = useContext(ShopContext);
 
   return (
     <div className="flex items-center justify-between py-5 font-medium">
-      <Search className="w-5 h-5 cursor-pointer" />
+      <Search onClick={() => {setShowSearch(true)}} className="w-5 h-5 cursor-pointer" />
 
       <NavLink to="/">
         <img src={assets.logo} alt="Logo" className="w-50 tracking-widest" />
       </NavLink>
 
       <ul className="hidden sm:flex gap-5 text-sm font-semibold">
-        {["Home", "Collection", "Solids", "Cotton", "Silk"].map((item, index) => (
+        {["Home", "Collection", "About", "Contact"].map((item, index) => (
           <li key={index}>
             <NavLink  to={item === "Home" ? "/" : `/${item.toLowerCase()}`} className="group flex flex-col items-center gap-2">
               <p>{item}</p>
@@ -51,7 +53,7 @@ const NavBar = () => {
             <ArrowLeft className="w-5 h-5 cursor-pointer" />
             <p className="text-lg text-sm font-semibold">Menu</p>
           </div>
-          {["Home", "Collection", "Solids", "Cotton", "Silk"].map((item, index) => (
+          {["Home", "Collection", "About", "Contact"].map((item, index) => (
             <NavLink key={index} onClick={() => setOpen(false)}  to={item === "Home" ? "/" : `/${item.toLowerCase()}`} className="py-2 pl-6 border border-b border-gray-200">
               {item}
             </NavLink>
