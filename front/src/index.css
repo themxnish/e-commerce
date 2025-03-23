@@ -19,6 +19,10 @@ a.active hr{
   animation: fadeIn 1s ease-in-out;
 }
 
+::-webkit-scrollbar{
+  display: none;
+}
+
 @media (max-width: 640px) {
   a.active{
     background-color: black;

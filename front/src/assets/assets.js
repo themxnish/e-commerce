@@ -28,11 +28,30 @@ export const products = [
     "name": "Handwoven Cotton Saree",
     "description": "A beautifully crafted handwoven cotton saree, lightweight and perfect for all-day wear.",
     "price": 1200,
-    "image": ["https://www.monri.in/cdn/shop/files/IMG_2766.jpg?v=1724243078&width=1445"],
+    "image": [
+    "https://www.monri.in/cdn/shop/files/IMG_2766.jpg?v=1724243078&width=1445",
+    "https://www.monri.in/cdn/shop/files/IMG_2770.jpg?v=1724243078&width=1445",
+    "https://www.monri.in/cdn/shop/files/IMG_2771.jpg?v=1724243078&width=1445",
+    "https://www.monri.in/cdn/shop/files/IMG_2772.jpg?v=1724243078&width=1445",
+    ],
     "category": "Women",
     "subCategory": "Sarees",
     "sizes": ["Free Size"],
     "date": 1716634356000,
+    "stock": 15,
+    "details": "This saree is made from 100% pure cotton and woven by skilled artisans. It is soft, breathable, and perfect for casual or festive wear.",
+    "reviews": [
+      {
+        "user": "Ananya Sharma",
+        "comment": "Absolutely love this saree! The fabric is so comfortable.",
+        "rating": 5
+      },
+      {
+        "user": "Pooja Verma",
+        "comment": "Good quality but the color is slightly different from the picture.",
+        "rating": 4
+      }
+    ],
     "bestseller": true
   },
   {
@@ -102,7 +121,7 @@ export const products = [
     "price": 1350,
     "image": ["https://rukminim2.flixcart.com/image/850/1000/kzllrbk0/dupatta/q/v/f/2-25-meters-1-art-silk-printed-red-women-dupatta-bhumi-designer-original-imagbkqggprfezyy.jpeg?q=20&crop=false"],
     "category": "Women",
-    "subCategory": "Accessories",
+    "subCategory": "Sarees",
     "sizes": ["Free Size"],
     "date": 1716634362000,
     "bestseller": true

@@ -7,7 +7,7 @@ const Item = ({ id, image, name, price }) => {
     
     return (
         <div className='flex flex-col h-full p-3'>
-            <Link to={`/product/${id}`} className='block cursor-pointer'>
+            <Link to={`/products/${id}`} className='block cursor-pointer'>
               <div className='overflow-hidden'>
                   <img className='border border-gray-400 hover:scale-105 transition-all duration-300 ease-in-out w-full h-64 object-cover' src={image[0]} alt={name} />
               </div>
