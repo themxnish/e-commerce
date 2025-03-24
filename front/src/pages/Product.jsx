@@ -8,7 +8,7 @@ import Related from '../components/Related';
 
 const Product = () => {
   const { id } = useParams();
-  const { products, currency } = useContext(ShopContext);
+  const { products, currency, addToCart } = useContext(ShopContext);
   const [ product, setProduct ] = useState(false);
   const [ img, setImg ] = useState('');
   const [ size, setSize ] = useState('');
@@ -91,7 +91,7 @@ const Product = () => {
             </p>
           </div>
           <div className='flex gap-4 mt-4'>
-            <button className='bg-black text-white px-8 py-3 active:scale-92 font-semibold hover:cursor-pointer transition-all duration-300 mt-4'>Add to cart</button>
+            <button onClick={() => addToCart(product.id, size)} className='bg-black text-white px-8 py-3 active:scale-92 font-semibold hover:cursor-pointer transition-all duration-300 mt-4'>Add to cart</button>
             <button onClick={handleShare} className='px-4 py-3 mt-4 flex items-center gap-2 rounded-md active:scale-92 font-semibold hover:cursor-pointer transition-all duration-300'>
               <FaShareAlt /> Share
             </button>

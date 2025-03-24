@@ -6,7 +6,7 @@ import { Search, User, ShoppingCart, Menu, ArrowLeft } from 'lucide-react';
 
 const NavBar = () => {
   const [open, setOpen] = useState(false);
-  const {setShowSearch} = useContext(ShopContext);
+  const {setShowSearch, getCartItems} = useContext(ShopContext);
 
   return (
     <div className="flex items-center justify-between py-5 font-medium">
@@ -41,7 +41,7 @@ const NavBar = () => {
 
         <Link to="/cart" className="relative">
           <ShoppingCart className="w-5 h-5 cursor-pointer" />
-          <p className="absolute -right-3 -top-3 bg-black text-white w-5 h-4 text-center flex justify-center items-center leading-4 aspect-square text-xs rounded-full">2</p>
+          <p className="absolute -right-3 -top-3 bg-black text-white w-5 h-4 text-center flex justify-center items-center leading-4 aspect-square text-xs rounded-full"> {getCartItems()}</p>
         </Link>
 
         <Menu onClick={() => setOpen(true)} className="w-5 h-5 cursor-pointer sm:hidden" />
