@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from "react";
-import { products, reviews } from "../assets/assets.js";
+import { products, reviews, users } from "../assets/assets.js";
 import { toast } from 'react-toastify'; 
 import { useNavigate } from 'react-router-dom';
 
@@ -15,6 +15,8 @@ export const ShopProvider = (props) => {
     const [cartItems, setCartItems] = useState({});
 
     const navigate = useNavigate();
+
+    const [user, setUser] = useState(null);
 
     const addToCart = (id, size) => {
         if (!size) {
@@ -85,7 +87,9 @@ export const ShopProvider = (props) => {
         getCartItems,
         updateQuantity,
         getCartAmount,
-        navigate
+        navigate,
+        user,
+        setUser
     }
 
     return (

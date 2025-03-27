@@ -10,6 +10,7 @@ import Orders from './pages/Orders'
 import Contact from './pages/Contact'
 import About from './pages/About'
 import Collection from './pages/Collection'
+import Profile from './pages/Profile'
 
 import NavBar from './components/NavBar'
 import Footer from './components/Footer'
@@ -26,6 +27,7 @@ const App = () => {
             <SearchBar/>
             <Routes>
                 <Route path="/" element={<Home />} />
+                <Route path="/profile" element={<Profile />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/products/:id" element={<Product />} />
                 <Route path="/cart" element={<Cart />} />

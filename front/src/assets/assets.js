@@ -22,6 +22,16 @@ export const reviews = [
   },
 ];
 
+export const users = [
+  {
+    name: "John Doe",
+    email: "johndoe@example.com",
+    image: "https://lh3.googleusercontent.com/a/ACg8ocIcNv7lDHsUcCeIuu4ePkxw2nlDCtW_iJYDAvzO7nlO1brfscZ_=s504-c-no",
+    phone: "123-456-7890",
+    address: "123 Main Street, City, Country"
+  }
+]
+
 export const products = [
   {
     "id": "txt001",
