@@ -34,7 +34,9 @@ const NavBar = () => {
             <div className="flex flex-col gap-2 w-36 py-2 px-4 bg-slate-100 border border-gray-500 text-slate-500 rounded shadow-lg">
               <p className="cursor-pointer hover:text-black text-sm">Logout</p>
               <p className="cursor-pointer hover:text-black text-sm">Profile</p>
-              <p className="cursor-pointer hover:text-black text-sm">Orders</p>
+              <Link to="/orders" className="cursor-pointer hover:text-black text-sm">
+                Orders
+              </Link>
             </div>
           </div>
         </div>
