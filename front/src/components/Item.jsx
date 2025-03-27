@@ -17,7 +17,7 @@ const Item = ({ id, image, name, price }) => {
                 <p className='text-gray-900 font-semibold text-md mt-auto text-left'>{currency}{price}</p>
             <button 
                 onClick={() => addToCart(id, "M")} 
-                className='w-full mt-auto py-3 bg-gray-100 border border-gray-400 text-gray-900 font-semibold rounded-md hover:bg-gray-300 transition'>
+                className='w-full mt-auto py-3 bg-gray-200 active:scale-95 text-gray-900 font-semibold hover:bg-gray-300 transition'>
                 Add to cart
             </button>
         </div>
