@@ -9,3 +9,25 @@
     background-color: #ebf0ff;
     border-color: #a086c5;
 }
+
+.dot {
+    display: inline-block;
+    animation: bounce 0.6s infinite ease-in-out;
+  }
+  .bounce {
+    animation: bounce 0.8s infinite ease-in-out;
+  }
+  .bounce.delay-200 {
+    animation-delay: 0.2s;
+  }
+  .bounce.delay-400 {
+    animation-delay: 0.4s;
+  }
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }

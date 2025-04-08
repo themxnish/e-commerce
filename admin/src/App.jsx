@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import Navbar from './components/Navbar'
 import SideBar from './components/SideBar'
 import { Routes, Route } from 'react-router-dom'
-import Add from './pages/Add'
-import List from './pages/List'
+import Add from './pages/add'
+import List from './pages/list'
 import Orders from './pages/Orders'
 import Login from './components/Login'
 
@@ -11,6 +11,7 @@ import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
 export const backendUrl = import.meta.env.VITE_BACKEND_URL
+export const currency = '₹'
 
 const App = () => {
   const [ token, setToken ] = useState(localStorage.getItem('token') ? localStorage.getItem('token') : '');
