@@ -1,13 +1,15 @@
 import { createContext, useState, useEffect } from "react";
-import { products, reviews, users } from "../assets/assets.js";
+import { reviews, users } from "../assets/assets.js";
 import { toast } from 'react-toastify'; 
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 export const ShopContext = createContext();
 
 export const ShopProvider = (props) => {
     const currency = '₹';
     const delivery_fee = 100;
+    const backend_url = import.meta.env.VITE_BACKEND_URL
     
     const [search, setSearch] = useState('');
     const [showSearch, setShowSearch] = useState(false);
@@ -17,6 +19,8 @@ export const ShopProvider = (props) => {
     const navigate = useNavigate();
 
     const [user, setUser] = useState(null);
+
+    const [ products, setProducts ] = useState([]);
 
     const addToCart = (id, size) => {
         if (!size) {
@@ -72,10 +76,28 @@ export const ShopProvider = (props) => {
         console.log(cartItems);
     }, [cartItems]);
 
+    const getProducts = async () => {
+        try{
+            const response = await axios.get(`${backend_url}/api/product`);
+            if(response.data.success) {
+                setProducts(response.data.data);
+            } else {
+                toast.error(response.data.message || 'Something went wrong');
+            }
+        } catch (error) {
+            toast.error(error.message);
+        }
+    }
+
+    useEffect(() => {
+        getProducts();
+    }, []);
+
     const value = {
         products,
         reviews,
         currency,
+        backend_url,
         delivery_fee,
         search,
         setSearch,

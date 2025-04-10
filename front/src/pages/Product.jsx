@@ -9,13 +9,13 @@ import Related from '../components/Related';
 const Product = () => {
   const { id } = useParams();
   const { products, currency, addToCart } = useContext(ShopContext);
-  const [ product, setProduct ] = useState(false);
+  const [ product, setProduct ] = useState(null);
   const [ img, setImg ] = useState('');
   const [ size, setSize ] = useState('');
   const [activeTab, setActiveTab] = useState('details');
 
   const fetchProduct = () => {
-    const foundProduct = products.find((item) => item.id === id);
+    const foundProduct = products.find((item) => item.id.toString() === id);
     if (foundProduct) {
       setProduct(foundProduct);
       setImg(foundProduct.image[0]);
@@ -39,7 +39,7 @@ const Product = () => {
   };
   
   useEffect(() => {
-    fetchProduct();
+    if (products.length) fetchProduct();
   }, [id, products]);
 
   return product ? (
@@ -141,7 +141,7 @@ const Product = () => {
     </div>
   ) : 
   <div className='text-center py-8 text-3x opacity-0'>
-     
+    <p className='text-3xl font-bold text-gray-800'>Product not found!</p>
   </div>
 }
 export default Product

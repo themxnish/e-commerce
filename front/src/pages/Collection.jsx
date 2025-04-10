@@ -62,7 +62,7 @@ function Collection() {
 
   useEffect(() => {
     handleFilter();
-  },[category, subCategory])
+  },[category, subCategory, products])
 
   useEffect(() => {
     sortProduct();
