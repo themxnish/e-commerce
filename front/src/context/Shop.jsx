@@ -22,6 +22,8 @@ export const ShopProvider = (props) => {
 
     const [ products, setProducts ] = useState([]);
 
+    const [ token, setToken ] = useState('');
+
     const addToCart = (id, size) => {
         if (!size) {
             toast.error('Please select a size');
@@ -93,6 +95,12 @@ export const ShopProvider = (props) => {
         getProducts();
     }, []);
 
+    useEffect(() => {
+        if(!token && localStorage.getItem('token')) {
+            setToken(localStorage.getItem('token'));
+        }
+    }, [token]);
+
     const value = {
         products,
         reviews,
@@ -111,7 +119,9 @@ export const ShopProvider = (props) => {
         getCartAmount,
         navigate,
         user,
-        setUser
+        setUser,
+        token,
+        setToken
     }
 
     return (
