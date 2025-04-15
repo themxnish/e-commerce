@@ -24,7 +24,7 @@ export const ShopProvider = (props) => {
 
     const [ token, setToken ] = useState('');
 
-    const addToCart = (id, size) => {
+    const addToCart = async (id, size) => {
         if (!size) {
             toast.error('Please select a size');
             return;
@@ -38,11 +38,17 @@ export const ShopProvider = (props) => {
             }
     
             newCart[id][size] = (newCart[id][size] || 0) + 1;
-    
-            console.log("Updated Cart:");
+
             toast.success('Item added to cart');
             return newCart;
         });
+        if (token) {
+            try {
+                await axios.post(backend_url + '/api/cart/add', { userId: user?.id, itemId: id, size }, { headers: { Authorization: `Bearer ${token}` } });
+            } catch (error) {
+                toast.error(error.message);
+            }
+        }
     };
     
     const getCartItems = () => {
@@ -55,12 +61,36 @@ export const ShopProvider = (props) => {
         let cartData = structuredClone(cartItems);
         cartData[id][size] = quantity;
         setCartItems(cartData);
+        if (token) {
+            try {
+                await axios.post(backend_url + '/api/cart/update', { userId: user?.id, itemId: id, size, quantity }, { headers: { Authorization: `Bearer ${token}` } });
+            } catch (error) {
+                console.log(error);
+                toast.error(error.message);
+            }
+        }
+    }
+
+    const getUserCart = async (token) => {
+        try {
+            const response = await axios.post(`${backend_url}/api/cart/get`, { userId: user?.id }, { headers: { Authorization: `Bearer ${token}` } });
+            if(response.data.success) {
+                setCartItems(response.data.cartData);
+            } 
+        } catch (error) {
+            console.log(error);
+            toast.error(error.message);
+        }
     }
 
     const getCartAmount = () => {
         let total = 0;
         for (const items in cartItems) {
-            let itemInfo = products.find((product) => product.id === items);
+            let itemInfo = products.find((product) => product.id.toString() === items);
+            if (!itemInfo) {
+                console.warn(`Product with ID ${items} not found.`);
+                continue;
+            }
             for (const item in cartItems[items]) {
                 try {
                     if(cartItems[items][item] > 0) {
@@ -98,6 +128,7 @@ export const ShopProvider = (props) => {
     useEffect(() => {
         if(!token && localStorage.getItem('token')) {
             setToken(localStorage.getItem('token'));
+            getUserCart(localStorage.getItem('token'));
         }
     }, [token]);
 

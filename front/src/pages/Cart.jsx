@@ -10,20 +10,22 @@ const Cart = () => {
   const [ cartData, setCartData ] = useState([]);
 
   useEffect(() => {
-    const tempData = [];
-    for (const items in cartItems) {
-      for (const item in cartItems[items]) {
-        if(cartItems[items][item] > 0) {
-          tempData.push({
-            id: items,
-            size: item,
-            quantity: cartItems[items][item]
-          })
+    if (products.length > 0) {
+      const tempData = [];
+      for (const items in cartItems) {
+        for (const item in cartItems[items]) {
+          if(cartItems[items][item] > 0) {
+            tempData.push({
+              id: items,
+              size: item,
+              quantity: cartItems[items][item]
+            })
+          }
         }
       }
-    }
-    setCartData(tempData);
-  }, [cartItems]);
+      setCartData(tempData);      
+    };
+  }, [cartItems, products]);
 
   return (
     <div className='border-t-1 border-gray-300 pt-14 px-4 sm:px-8'>
@@ -33,7 +35,8 @@ const Cart = () => {
       {cartData.length > 0 ? (
         <div className="flex flex-col gap-6">
           {cartData.map((item, index) => {
-            const foundProduct = products.find((product) => product.id === item.id);
+            const foundProduct = products.find((product) => String(product.id) === String(item.id));
+            if (!foundProduct) return null;
             return (
               <div key={index} className="flex items-center justify-between border-b-1 border-gray-400 pb-4">
                 <div className="flex items-start gap-4">
