@@ -121,6 +121,16 @@ export const ShopProvider = (props) => {
         }
     }
 
+    const calculateOrderTotal = (items) => {
+        let total = 0;
+        for (const item of items) {
+            const product = products.find(p => p.id.toString() === item.id.toString());
+            const price = product ? product.price : 0;
+            total += price * item.quantity;
+        }
+        return total + delivery_fee;
+    }
+
     useEffect(() => {
         getProducts();
     }, []);
@@ -148,6 +158,7 @@ export const ShopProvider = (props) => {
         getCartItems,
         updateQuantity,
         getCartAmount,
+        calculateOrderTotal,
         navigate,
         user,
         setUser,
