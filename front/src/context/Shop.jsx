@@ -131,6 +131,19 @@ export const ShopProvider = (props) => {
         return total + delivery_fee;
     }
 
+    const getUserDetails = async (storedToken) => {
+        try {
+            const response = await axios.get(`${backend_url}/api/user/current`, {headers: { Authorization: `Bearer ${storedToken}` }});
+            if (response.data.success) {
+                setUser(response.data.user);
+            } else {
+                toast.error("Failed to fetch user details");
+            }
+        } catch (error) {
+            toast.error("Error getting user info");
+        }
+    };    
+
     useEffect(() => {
         getProducts();
     }, []);
@@ -139,6 +152,7 @@ export const ShopProvider = (props) => {
         if(!token && localStorage.getItem('token')) {
             setToken(localStorage.getItem('token'));
             getUserCart(localStorage.getItem('token'));
+            getUserDetails(localStorage.getItem('token'));
         }
     }, [token]);
 
