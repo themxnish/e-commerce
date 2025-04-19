@@ -35,9 +35,10 @@ const placeOrderRazorpay = async (req, res) => {
 
 const allOrders = async (req, res) => {
     try {
-
+        const orders = await supabase.from('orders').select('*');
+        res.json({ success: true, message: 'Orders fetched successfully', orders: orders.data });
     } catch (error) {
-
+        res.json({ success: false, message: error.message });
     }    
 }
 
