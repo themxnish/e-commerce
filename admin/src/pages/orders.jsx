@@ -20,6 +20,17 @@ const Orders = ({token}) => {
     }
   }
 
+  const handleStatus = async (event, orderId) => {
+    try{
+      const response = await axios.post(`${backendUrl}/api/order/status`, { orderId, status: event.target.value }, { headers: { token } });
+      if(response.data.success) {
+        await fetchOrders();
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
+  }
+
   useEffect(() => {
     fetchOrders();
   }, [token])
@@ -58,13 +69,13 @@ const Orders = ({token}) => {
   
             <div className='flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 pt-2'>
               <p className='text-lg font-semibold'>{currency}{order.amount}.00</p>
-              <select className='border border-gray-300 px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400'>
-                <option value='orderplaced'>Order Placed</option>
-                <option value='packed'>Packed</option>
-                <option value='outfordelivery'>Out for Delivery</option>
-                <option value='shipped'>Shipped</option>
-                <option value='delivered'>Delivered</option>
-                <option value='cancelled'>Cancelled</option>
+              <select value={order.status} onChange={(event) => handleStatus(event, order.id)} className='border border-gray-300 px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400'>
+                <option value='Order Placed'>Order Placed</option>
+                <option value='Packed'>Packed</option>
+                <option value='Out For Delivery'>Out for Delivery</option>
+                <option value='Shipped'>Shipped</option>
+                <option value='Delivered'>Delivered</option>
+                <option value='Cancelled'>Cancelled</option>
               </select>
             </div>
           </div>

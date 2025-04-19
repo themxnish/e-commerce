@@ -68,7 +68,7 @@ const Orders = () => {
                 </div>
                 <div className='w-full md:w-auto flex flex-col items-end mt-4 md:mt-0 md:items-end'>
                   <p className='text-lg font-semibold'>Order Total: {currency}{calculateOrderTotal(order.items)}</p>
-                  <button onClick={() => {}} className='mt-2 border border-gray-300 bg-gray-200 font-semibold px-4 py-2 text-sm font-medium hover:bg-gray-300 transition'>Track Order</button>
+                  <button onClick={() => {fetchOrders()}} className='mt-2 border border-gray-300 bg-gray-200 font-semibold px-4 py-2 text-sm font-medium hover:bg-gray-300 transition'>Track Order</button>
                 </div>
               </div>
             </div>

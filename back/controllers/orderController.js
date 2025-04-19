@@ -54,9 +54,12 @@ const userOrders = async (req, res) => {
 
 const orderStatus = async (req, res) => {
     try {
-
+        const { orderId, status } = req.body;
+        const { error } = await supabase.from('orders').update({ status }).eq('id', orderId);
+        if (error) throw error;
+        res.json({ success: true, message: 'Order status updated successfully'});
     } catch (error) {
-
+        res.json({ success: false, message: error.message });
     }
 }
 
