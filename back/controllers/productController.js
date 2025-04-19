@@ -1,7 +1,5 @@
 import { v2 as cloudinary } from  'cloudinary';
 import supabase from "../config/supabaseClient.js";
-import { json } from 'express';
-
 
 const addProduct = async (req, res) => {
     try {
@@ -75,5 +73,17 @@ const getSingleProduct = async (req, res) => {
         res.status(500).json({ success: false, message: error.message });
     }
 }
-
-export { addProduct, getProducts, removeProduct, getSingleProduct }
+const searchProducts = async (req, res) => {
+    try {
+        const { query } = req.query;
+        if (!query || query.trim() === '') {
+            return res.status(400).json({ success: false, message: "Search query is required" });
+        }
+        const { data: products, error } = await supabase.from('product').select('*').ilike('name', `%${query}%`);
+        if (error) throw error;
+        res.json({ success: true, data: products });
+    } catch (error) {
+        res.status(500).json({ success: false, message: error.message });
+    }
+}
+export { addProduct, getProducts, removeProduct, getSingleProduct, searchProducts };

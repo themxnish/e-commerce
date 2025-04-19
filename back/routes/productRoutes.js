@@ -1,5 +1,5 @@
 import express from "express";
-import { addProduct, getProducts, removeProduct, getSingleProduct } from "../controllers/productController.js";
+import { addProduct, getProducts, removeProduct, getSingleProduct, searchProducts } from "../controllers/productController.js";
 import upload from "../middleware/multer.js";
 import adminAuth from "../middleware/adminAuth.js";
 
@@ -16,6 +16,7 @@ productRouter.post(
     ]), 
     addProduct);
 productRouter.get("/", getProducts);
+productRouter.get("/search", searchProducts);
 productRouter.delete("/remove/:id", adminAuth, removeProduct);
 productRouter.get("/:id", getSingleProduct);
 
