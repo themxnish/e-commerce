@@ -41,7 +41,7 @@ function Collection() {
       copy = copy.filter(item => category.includes(item.category))
     }
     if(subCategory.length > 0) {
-      copy = copy.filter(item => subCategory.includes(item.subCategory))
+      copy = copy.filter(item => subCategory.includes(item.sub_category))
     }
     setFilterProduct(copy)
     setCurrentPage(1)
@@ -98,15 +98,15 @@ function Collection() {
           <div className={`border border-gray-400 pl-5 py-3 my-5 ${filter ? '' : 'hidden'} sm:block`}>
             <p className='mb-3 text-sm font-medium'>Sub Categories</p>
             <div className='flex flex-col gap-2 text-sm font-light text-gray-700'>
-              <p className='flex gap-2'>
-                <input className='w-3' type="checkbox" value={'Sarees'} onChange={handleSubCategory}/>Sarees
-              </p>
-              <p className='flex gap-2'>
-                <input className='w-3' type="checkbox" value={'Shirts'} onChange={handleSubCategory}/>Shirts
-              </p>
-              <p className='flex gap-2'>
-                <input className='w-3' type="checkbox" value={'Pajama'} onChange={handleSubCategory}/>Pajama
-              </p>
+              <p className='flex gap-2'><input className='w-3' type="checkbox" value={'Tshirts'} onChange={handleSubCategory}/>Tshirts</p>
+              <p className='flex gap-2'><input className='w-3' type="checkbox" value={'Shirts'} onChange={handleSubCategory}/>Shirts</p>
+              <p className='flex gap-2'><input className='w-3' type="checkbox" value={'Jeans'} onChange={handleSubCategory}/>Jeans</p>
+              <p className='flex gap-2'><input className='w-3' type="checkbox" value={'Tops'} onChange={handleSubCategory}/>Tops</p>
+              <p className='flex gap-2'><input className='w-3' type="checkbox" value={'Dresses'} onChange={handleSubCategory}/>Dresses</p>
+              <p className='flex gap-2'><input className='w-3' type="checkbox" value={'Kurtis'} onChange={handleSubCategory}/>Kurtis</p>
+              <p className='flex gap-2'><input className='w-3' type="checkbox" value={'Shorts'} onChange={handleSubCategory}/>Shorts</p>
+              <p className='flex gap-2'><input className='w-3' type="checkbox" value={'Nightwear'} onChange={handleSubCategory}/>Night wear</p>
+              <p className='flex gap-2'><input className='w-3' type="checkbox" value={'Ethnic'} onChange={handleSubCategory}/>Ethnic wear</p>
             </div>
           </div>
         </div>

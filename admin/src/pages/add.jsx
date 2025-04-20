@@ -13,8 +13,8 @@ const Add = ({token}) => {
   const [ name, setName ] = useState("")
   const [ description, setDescription ] = useState("")
   const [ price, setPrice ] = useState("")
-  const [ category, setCategory ] = useState("men")
-  const [ subCategory, setSubCategory ] = useState("top")
+  const [ category, setCategory ] = useState("Men")
+  const [ subCategory, setSubCategory ] = useState("Top")
   const [ stock, setStock ] = useState("")
   const [ details, setDetails ] = useState("")
   const [ bestseller, setBestseller ] = useState(false)
@@ -25,7 +25,7 @@ const Add = ({token}) => {
 
   const resetForm = () => {
           setName(""); setDescription(""); setPrice("");
-          setCategory("men"); setSubCategory("top");
+          setCategory("Men"); setSubCategory("Top");
           setStock(""); setDetails(""); setBestseller(false);
           setSizes([]); setImage1(false); setImage2(false);
           setImage3(false); setImage4(false);
@@ -116,28 +116,28 @@ const Add = ({token}) => {
           <div className='w-full'>
             <label htmlFor="category" className='text-lg font-medium'>Category</label>
             <select onChange={(e) => setCategory(e.target.value)}  id="category" className='border border-gray-400 rounded-sm w-full px-3 py-2 mt-1 outline-none' required>
-              <option value="men">Men</option>
-              <option value="women">Women</option>
-              <option value="kids">Kids</option>
+              <option value="Men">Men</option>
+              <option value="Women">Women</option>
+              <option value="Kids">Kids</option>
             </select>
           </div>
           <div className='w-full'>
             <label htmlFor="subcategory" className='text-lg font-medium'>Subcategory</label>
             <select onChange={(e) => setSubCategory(e.target.value)} id="subcategory" className="border border-gray-400 rounded-sm w-full px-3 py-2 mt-1 outline-none" required>
               <optgroup label="Men">
-                <option value="tshirts">T-Shirts</option>
-                <option value="shirts">Shirts</option>
-                <option value="jeans">Jeans</option>
+                <option value="Tshirts">T-Shirts</option>
+                <option value="Shirts">Shirts</option>
+                <option value="Jeans">Jeans</option>
               </optgroup>
               <optgroup label="Women">
-                <option value="tops">Tops</option>
-                <option value="dresses">Dresses</option>
-                <option value="kurtis">Kurtis</option>
+                <option value="Tops">Tops</option>
+                <option value="Dresses">Dresses</option>
+                <option value="Kurtis">Kurtis</option>
               </optgroup>
               <optgroup label="Kids">
-                <option value="kids-shorts">Shorts</option>
-                <option value="kids-night">Night wear</option>
-                <option value="kids-ethnic">Ethnic Wear</option>
+                <option value="Shorts">Shorts</option>
+                <option value="Nightwear">Night wear</option>
+                <option value="Ethnic">Ethnic Wear</option>
               </optgroup>
             </select>
           </div>
