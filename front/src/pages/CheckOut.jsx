@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import Title from '../components/Title'
 import CartTotal from '../components/CartTotal'
 import { SiStripe, SiRazorpay, SiCashapp } from "react-icons/si";
@@ -14,6 +14,22 @@ const CheckOut  = () => {
     address: '', city: '', state: '', zip: '', country: 'India', phone: ''
   });
 
+  useEffect(() => {
+    const savedForm = localStorage.getItem('checkoutForm');
+    if (savedForm) {
+      setFormData(JSON.parse(savedForm));
+    }
+    const savedCart = localStorage.getItem('cartItems');
+    if (savedCart) {
+      setCartItems(JSON.parse(savedCart));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('checkoutForm', JSON.stringify(formData));
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+  }, [formData, cartItems]);
+
   const onChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
@@ -25,6 +41,10 @@ const CheckOut  = () => {
     try {
       let orderItems = [];
   
+      if (!token) {
+        toast.error("Please log in to place your order.");
+        return;
+      }
       for (const itemId in cartItems) {
         for (const size in cartItems[itemId]) {
           if (cartItems[itemId][size] > 0) {
@@ -100,12 +120,12 @@ const CheckOut  = () => {
             <div onClick={() => setMethod("stripe")} className='flex items-center gap-3 border py-3 px-4 cursor-pointer hover:bg-gray-200'>
               <p className={`w-4 h-4 border rounded-full ${method === "stripe" ? "bg-green-400" : ""}`}></p>
               <SiStripe size={22} color="#635BFF" />
-              <span className='text-sm font-medium'>Stripe</span>
+              <span className='text-sm font-medium'>Stripe <p className='text-xs text-red-400'>(currently unavailable)</p></span>
             </div>    
             <div onClick={() => setMethod("razorpay")} className='flex items-center gap-3 border py-3 px-4 cursor-pointer hover:bg-gray-200'>
               <p className={`w-4 h-4 border rounded-full ${method === "razorpay" ? "bg-green-400" : ""}`}></p>
               <SiRazorpay size={22} color="darkblue-500" />
-              <span className='text-sm font-medium'>Razorpay</span>
+              <span className='text-sm font-medium'>Razorpay <p className='text-xs text-red-400'>(currently unavailable)</p></span>
               </div>
             <div onClick={() => setMethod("cod")} className='flex items-center gap-3 border py-3 px-4 cursor-pointer hover:bg-gray-200'>
               <p className={`w-4 h-4 border rounded-full ${method === "cod" ? "bg-green-400" : ""}`}></p>

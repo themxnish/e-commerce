@@ -14,25 +14,6 @@ const placeOrderCOD = async (req, res) => {
     }
 }
 
-
-  
-
-const placeOrderStripe = async (req, res) => {
-    try {
-
-    } catch (error) {
-
-    }
-}
-
-const placeOrderRazorpay = async (req, res) => {
-    try {
-
-    } catch (error) {
-
-    }
-}
-
 const allOrders = async (req, res) => {
     try {
         const orders = await supabase.from('orders').select('*');
@@ -63,4 +44,4 @@ const orderStatus = async (req, res) => {
     }
 }
 
-export { placeOrderCOD, placeOrderStripe, placeOrderRazorpay, allOrders, userOrders, orderStatus };
+export { placeOrderCOD, allOrders, userOrders, orderStatus };
