@@ -16,7 +16,7 @@ const NavBar = () => {
   }
 
   return (
-    <div className="flex items-center justify-between py-5 font-medium">
+    <div className="flex items-center justify-between py-5 px-[4%] font-medium">
       <Search onClick={() => {setShowSearch(true)}} className="w-5 h-5 cursor-pointer" />
 
       <NavLink to="/">

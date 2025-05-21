@@ -12,18 +12,21 @@ import About from './pages/About'
 import Collection from './pages/Collection'
 import Profile from './pages/Profile'
 
+import Top from './components/Top'
 import NavBar from './components/NavBar'
 import Footer from './components/Footer'
 import SearchBar from './components/SearchBar'
 
-import { ToastContainer, toast } from 'react-toastify'
+import { ToastContainer} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
 const App = () => {
     return (
-        <div className="px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw]">
+        <div>
+            <Top/>
             <ToastContainer/>
             <NavBar/>
+            <div className="px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw]">
             <SearchBar/>
             <Routes>
                 <Route path="/" element={<Home />} />
@@ -38,6 +41,7 @@ const App = () => {
                 <Route path="/collection" element={<Collection />} />
             </Routes>
             <Footer/>
+        </div>
         </div>
     )
 }
