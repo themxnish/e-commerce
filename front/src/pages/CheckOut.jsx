@@ -30,6 +30,21 @@ const CheckOut  = () => {
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
   }, [formData, cartItems]);
 
+  useEffect(() => {
+    const savedCart = localStorage.getItem('cartItems');
+    if (savedCart) {
+      setCartItems(JSON.parse(savedCart));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+  }, [cartItems]);
+
+  useEffect(() => {
+    getCartAmount();
+  }, [cartItems]);
+
   const onChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;

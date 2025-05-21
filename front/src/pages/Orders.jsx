@@ -59,11 +59,17 @@ const Orders = () => {
               ))}
               <div className='flex flex-col md:flex-row justify-between items-start md:items-center mt-4 border-t pt-4 border-gray-300'>
                 <div className='space-y-1 text-sm text-gray-600'>
-                  <p><strong>Order Date: </strong>{new Date(order.items[0].date).toDateString()}</p>
-                  <p><strong>Payment Method: </strong>{order.items[0].paymentMethod}</p>
+                  <p>
+                    <strong>Order Date: </strong>
+                    {order.items[0]?.date ? new Date(order.items[0].date).toDateString() : "N/A"}
+                  </p>
+                  <p>
+                    <strong>Payment Method: </strong>
+                    {order.items[0]?.paymentMethod || "N/A"}
+                  </p>
                   <div className='flex items-center gap-2 font-medium'>
                     <span className='w-3 h-3 rounded-full bg-green-500'></span>
-                    <p>{order.items[0].status}</p>
+                    <p>{order.items[0]?.status || "Unknown"}</p>
                   </div>
                 </div>
                 <div className='w-full md:w-auto flex flex-col items-end mt-4 md:mt-0 md:items-end'>

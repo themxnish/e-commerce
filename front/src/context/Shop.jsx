@@ -149,12 +149,18 @@ export const ShopProvider = (props) => {
     }, []);
 
     useEffect(() => {
-        if(!token && localStorage.getItem('token')) {
-            setToken(localStorage.getItem('token'));
-            getUserCart(localStorage.getItem('token'));
-            getUserDetails(localStorage.getItem('token'));
-        }
-    }, [token]);
+        const initializeUser = async () => {
+            if (localStorage.getItem('token')) {
+                const storedToken = localStorage.getItem('token');
+                setToken(storedToken);
+                await getProducts();
+                await getUserDetails(storedToken);
+                await getUserCart(storedToken);
+            }
+        };
+        initializeUser();
+    }, []);
+    
 
     const value = {
         products,
