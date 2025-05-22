@@ -21,7 +21,7 @@ const CustomerReviews = () => {
       <div className="flex flex-col sm:flex-row flex-wrap justify-center items-center gap-8">
         {reviews.length > 0 ? (
           reviews.map((review, index) => (
-            <div key={index} className="bg-white p-6 rounded-md text-center shadow-md w-75 h-56 flex flex-col justify-between">
+            <div key={index} className="bg-white p-6 rounded-2xl text-center shadow-md w-75 h-56 flex flex-col justify-between">
               <FaQuoteLeft className="text-gray-500 text-3xl mx-auto hover:rotate-25 transition-all duration-200"/>
               <p className="text-gray-700 italic flex-grow flex items-center justify-center">"{review.comment}"</p>
               <div>

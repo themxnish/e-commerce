@@ -3,7 +3,7 @@ import React from "react";
 const Banner = () => {
   return (
     <div 
-      className="w-full h-[40vh] sm:h-[50vh] flex items-center justify-center text-white border border-black bg-cover bg-center hover:scale-101 transition-all duration-300 animate-fadeIn"
+      className="w-full h-[70vh] sm:h-[60vh] flex items-center justify-center text-white border border-black bg-cover bg-center hover:scale-101 transition-all duration-300 animate-fadeIn"
       style={{ backgroundImage: "url('https://images.pexels.com/photos/8007354/pexels-photo-8007354.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load')" }}
     >
       <div className="flex flex-col items-center text-center px-6 max-w-2xl mx-auto py-5">

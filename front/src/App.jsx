@@ -26,7 +26,7 @@ const App = () => {
             <Top/>
             <ToastContainer/>
             <NavBar/>
-            <div className="px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw]">
+            <div className="px-3 sm:px-[4vw] md:px-[4vw] lg:px-[6vw]">
             <SearchBar/>
             <Routes>
                 <Route path="/" element={<Home />} />

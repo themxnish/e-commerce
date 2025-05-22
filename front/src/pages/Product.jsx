@@ -44,12 +44,12 @@ const Product = () => {
 
   return product ? (
     <div className='border-t-1 border-gray-300 pt-5 tranisition-opacity ease-in duration-500 opacity-100'>
-      <div className='flex gap-12 sm:gap-12 flex-col sm:flex-row'>
-        <div className='flex-1 flex gap-3 sm:flex-row flex-col'>
-          <div className='w-full sm:w-[80%]'>
+      <div className='flex gap-2 flex-col sm:flex-row'>
+        <div className='flex-1 flex gap-2 sm:flex-row flex-col'>
+          <div className='w-full sm:w-[65%]'>
             <img className='w-full h-auto' src={img} alt="" />
           </div>
-          <div className='flex sm:flex-col overflow-x-auto sm:overflow-y-scroll justify-between sm:justify-normal sm:w-[18.7%] w-full gap-1'>
+          <div className='flex sm:flex-col overflow-x-auto sm:overflow-y-scroll justify-between sm:justify-normal sm:w-[15%] w-full gap-1'>
             {
               product.image.map((item, index) => (
                 <img onClick={() => setImg(item)} src={item} key={index} className='w-[24%] sm:w-full sm:mb-3 flex-shrink-0 cursor-pointer hover:scale-105 transition-all duration-300 ease-in-out' alt="" />
